@@ -21,6 +21,9 @@ export default defineNuxtConfig({
 	apollo: {
 		clients: {
 			default: {
+				cookieAttributes: {
+					httpOnly: true,
+				},
 				httpEndpoint: process.env.BACKEND_SERVER ?? '',
 			},
 		},
