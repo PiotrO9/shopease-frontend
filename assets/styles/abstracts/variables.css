@@ -1,19 +1,22 @@
 :root {
 	/* stylelint-disable custom-property-empty-line-before */
 
-	--main-font: 'Roboto', sans-serif;
-	--second-font: 'Merriweather', sans-serif;
+	--main-font: 'Geist', sans-serif;
 
-	--color-primary: #6bcdfd;
-	--color-secondary: #f0f0f0;
-	--gray-300: #a3a3a3;
+	--color-primary: #1d242d;
+	--color-secondary: #e8e9ea;
+
+	--gray-300: #f4f4f5;
+	--gray-500: #b8babd;
+	--gray-700: #767b80;
 
 	--background-color: #fff;
 	--background-color-negative: #000;
 
-	--color-succes: #11bc4a;
-	--color-error: #d21b1b;
-	--color-warning: #eea11b;
+	--color-succes: #29a578;
+	--color-error: #ef4261;
+	--color-error-pale: #f58da0;
+	--color-warning: #f79f1b;
 
 	--text-color: #000;
 	--text-color-negative: #fff;

@@ -1,8 +1,8 @@
 export enum HttpMethod {
-	GET = 'GET',
-	POST = 'POST',
-	PUT = 'PUT',
-	DELETE = 'DELETE',
+	GET = 'get',
+	POST = 'post',
+	PUT = 'put',
+	DELETE = 'delete',
 }
 
 export async function useApi<T>(method: HttpMethod, url: string, data?: any) {

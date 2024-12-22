@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer buttons {
+	.btn {
+		@apply flex items-center justify-center;
+	}
+
+	.btn.fill {
+	}
+}
