@@ -14,7 +14,7 @@ const { styles, variant, loading, disabled } = withDefaults(defineProps<ActionPr
 
 const variantStyles = computed(() => {
 	if (variant === 'primary') {
-		return 'bg-white text-primary border-gray-300 hover:border-primary';
+		return 'bg-white text-primary border-inputColor hover:border-primary';
 	}
 	else {
 		return 'bg-primary text-white';
@@ -39,7 +39,7 @@ function handleClick() {
 <template>
 	<button
 		:class="[
-			'tracking-wider relative cursor-pointer transition-colors flex-center border-2 border-solid rounded-lg font-bold py-2 px-4 select-none',
+			'tracking-wider relative cursor-pointer transition-colors flex-center border-2 border-solid rounded-lg font-bold py-3 px-4 select-none',
 			disabled ? isDisabled : variantStyles,
 			styles,
 			isloading,

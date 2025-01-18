@@ -1,0 +1,13 @@
+input[type="text"] {
+	padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+	color: var(--text-color);
+	display: inline-flex;
+	border-radius: 8px;
+	border: 2px solid var(--input-color);
+	font-weight: bold;
+	background-color: #fff;
+
+	&::placeholder {
+		color: var(--input-color);
+	}
+}

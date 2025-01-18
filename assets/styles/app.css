@@ -7,6 +7,7 @@
 @import url('./base/fonts.css');
 @import url('./base/elements.css');
 @import url('./base/base.css');
+@import url('./base/input.css');
 
 @import url('./elements/button');
 /* stylelint-enable at-rule-empty-line-before */

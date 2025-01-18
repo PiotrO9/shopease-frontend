@@ -18,7 +18,7 @@
 	--color-error-pale: #f58da0;
 	--color-warning: #f79f1b;
 
-	--text-color: #000;
+	--text-color: var(--color-primary);
 	--text-color-negative: #fff;
 
 	--button-primary-text: var(--color-primary);
@@ -37,7 +37,7 @@
 	--link-color: var(--color-primary);
 	--link-color-hover: #1261eb;
 
-	--input-border: var(--color-primary);
+	--input-color: var(--gray-500);
 
 	--border-radius: 12px;
 
