@@ -37,8 +37,7 @@ function test() {
 		<Action>
 			<h1>test</h1>
 		</Action>
-		<input type="text" placeholder="test" />
 
-		<input type="checkbox" checked>
+		<input type="radio" for="test" name="test" disabled checked />
 	</div>
 </template>@click=
