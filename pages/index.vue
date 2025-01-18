@@ -38,5 +38,7 @@ function test() {
 			<h1>test</h1>
 		</Action>
 		<input type="text" placeholder="test" />
+
+		<input type="checkbox" checked>
 	</div>
 </template>@click=
