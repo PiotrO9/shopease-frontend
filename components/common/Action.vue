@@ -8,11 +8,13 @@ interface ActionProps {
 	disabled?: boolean;
 }
 
-const { styles, variant, loading, disabled } = defineProps<ActionProps>();
+const { styles, variant, loading, disabled } = withDefaults(defineProps<ActionProps>(), {
+	variant: 'primary',
+});
 
 const variantStyles = computed(() => {
 	if (variant === 'primary') {
-		return 'bg-white text-primary';
+		return 'bg-white text-primary border-gray-300 hover:border-primary';
 	}
 	else {
 		return 'bg-primary text-white';
@@ -37,7 +39,7 @@ function handleClick() {
 <template>
 	<button
 		:class="[
-			'tracking-wider relative cursor-pointer transition-colors flex-center border-2 border-solid rounded-lg font-bold py-2 px-4',
+			'tracking-wider relative cursor-pointer transition-colors flex-center border-2 border-solid rounded-lg font-bold py-2 px-4 select-none',
 			disabled ? isDisabled : variantStyles,
 			styles,
 			isloading,

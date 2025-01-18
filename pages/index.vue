@@ -33,7 +33,7 @@ function test() {
 </script>
 
 <template>
-	<Action @click="test">
+	<Action :disabled="true" @click="test">
 		<h1>test</h1>
 	</Action>
 </template>
