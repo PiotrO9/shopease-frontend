@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface DialogPropsModel {
 	modelValue?: boolean;
+	title?: string;
 }
 
 const props = defineProps<DialogPropsModel>();
@@ -108,6 +109,20 @@ function slotExists(slotName: string) {
 						<Icon name="material-symbols:close" />
 					</button>
 				</header>
+				<header v-else class="header">
+					<span class="title">
+						{{ props.title }}
+					</span>
+					<button
+						class="close"
+						type="button"
+						title="Close"
+						@click="handleCloseDialog"
+					>
+						<Icon name="material-symbols:close" />
+					</button>
+				</header>
+				<hr>
 				<main class="inner">
 					<slot :cancel="handleCloseDialog" />
 				</main>
@@ -175,7 +190,6 @@ function slotExists(slotName: string) {
 }
 
 .scroll-container {
-	padding: 20px;
 	overflow: auto;
 	height: fit-content;
 	max-height: calc((100vh - 6px) - 2em);
@@ -191,6 +205,7 @@ function slotExists(slotName: string) {
 .inner {
 	background-color: #fff;
 	min-height: 50px;
+	padding: 0px 20px 20px;
 }
 
 .dialog[open] {
@@ -228,6 +243,14 @@ function slotExists(slotName: string) {
 	grid-template-columns: 1fr auto;
 	gap: 15px;
 	align-items: center;
+	padding: 20px 20px 0;
+}
+
+hr {
+	width: 100%;
+	height: 1px;
+	border: none;
+	background-color: var(--gray-500);
 }
 
 .title {

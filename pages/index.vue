@@ -26,18 +26,17 @@ definePageMeta({
 // };
 
 // handleCreateUser();
+const modalState = ref(false);
 
-function test() {
-	console.log('test');
-}
+onMounted(() => {
+	modalState.value = true;
+});
 </script>
 
 <template>
 	<div>
-		<Action>
+		<Dialog :model-value="modalState" title="lOREM IPSUM">
 			<h1>test</h1>
-		</Action>
-
-		<input type="radio" for="test" name="test" disabled checked />
+		</Dialog>
 	</div>
-</template>@click=
+</template>
