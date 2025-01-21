@@ -5,6 +5,8 @@ body,
 #__nuxt {
 	width: 100%;
 	min-height: 100dvh;
+	display: flex;
+	justify-content: center;
 }
 
 html {
@@ -21,10 +23,6 @@ a {
 
 	&:hover {
 		color: var(--link-color-hover);
-	}
-
-	&:visited {
-		color: var(--link-color);
 	}
 }
 

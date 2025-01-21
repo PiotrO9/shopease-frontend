@@ -26,17 +26,9 @@ definePageMeta({
 // };
 
 // handleCreateUser();
-const modalState = ref(false);
-
-onMounted(() => {
-	modalState.value = true;
-});
 </script>
 
 <template>
 	<div>
-		<Dialog :model-value="modalState" title="lOREM IPSUM">
-			<h1>test</h1>
-		</Dialog>
 	</div>
 </template>
