@@ -11,6 +11,12 @@ export default {
 				gray700: 'var(--gray-700)',
 				inputColor: 'var(--input-color)',
 			},
+			container: {
+                center: true,
+                screens: {
+                    sm: '1536px',
+                },
+            },
 		},
 	},
 	plugins: [],

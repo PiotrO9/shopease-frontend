@@ -9,6 +9,13 @@ export default defineNuxtConfig({
 	],
 
 	plugins: ['~/plugins/pinia.js'],
+
+	components: [
+		{
+			path: '~/components',
+			pathPrefix: false,
+		},
+	],
 	devtools: { enabled: true },
 	css: ['./assets/styles/app.css'],
 
