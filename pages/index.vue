@@ -29,6 +29,7 @@ definePageMeta({
 </script>
 
 <template>
-	<div>
+	<div class="p-8">
+		<Pager />
 	</div>
 </template>
