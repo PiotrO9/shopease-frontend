@@ -8,12 +8,12 @@ interface ActionProps {
 	disabled?: boolean;
 }
 
-const { styles, variant, loading, disabled } = withDefaults(defineProps<ActionProps>(), {
+const props = withDefaults(defineProps<ActionProps>(), {
 	variant: 'primary',
 });
 
 const variantStyles = computed(() => {
-	if (variant === 'primary') {
+	if (props.variant === 'primary') {
 		return 'bg-white text-primary border-inputColor hover:border-primary';
 	}
 	else {
@@ -22,11 +22,16 @@ const variantStyles = computed(() => {
 });
 
 const isloading = computed(() => {
-	return (loading && !disabled) ? 'loading' : '';
+	console.log('disabled');
+	return (props.loading && !props.disabled) ? 'loading' : '';
+});
+
+watch(() => props.disabled, () => {
+	console.log('disabled: ', props.disabled);
 });
 
 const isDisabled = computed(() => {
-	return disabled ? 'opacity-30 cursor-not-allowed border-gray700 bg-gray700 text-white' : '';
+	return props.disabled ? 'opacity-30 cursor-not-allowed border-gray700 bg-gray700 text-white' : '';
 });
 
 const emit = defineEmits(['click']);
@@ -46,7 +51,6 @@ function handleClick() {
 			isDisabled,
 			loading ? 'pointer-events-none cursor-wait' : '',
 		]"
-		:disabled="disabled"
 		@click="handleClick"
 	>
 		<div v-if="loading" class="loader-wrapper">

@@ -1,79 +1,78 @@
-<script setup lang='ts'>
-import { ref, computed } from 'vue';
-import Action from '~/components/common/Action.vue';
+<script setup lang="ts">
+const currentPage = ref<number>(1);
+const totalPages = ref<number>(10);
 
-const currentPage = ref(1);
-const totalPages = ref(10); // Example total pages, you can set this dynamically
+const getPaginationPages = computed<number[]>(function (): number[] {
+	const maxVisiblePages = 5;
+	const total = totalPages.value;
+	const current = currentPage.value;
 
-const pages = computed(() => {
-  const pagesArray = [];
-  for (let i = 1; i <= totalPages.value; i++) {
-    pagesArray.push(i);
-  }
-  return pagesArray;
+	if (total <= maxVisiblePages) {
+		return Array.from({ length: total }, (_, i) => i + 1);
+	}
+
+	const pages: number[] = [];
+
+	if (current <= 3) {
+		for (let i = 1; i <= maxVisiblePages; i++) {
+			pages.push(i);
+		}
+	} else if (current >= total - 2) {
+		for (let i = total - 4; i <= total; i++) {
+			pages.push(i);
+		}
+	} else {
+		for (let i = current - 2; i <= current + 2; i++) {
+			pages.push(i);
+		}
+	}
+
+	return pages;
 });
 
-const swipeToPage = (page: number) => {
-  if (page >= 1 && page <= totalPages.value) {
-    currentPage.value = page;
-  }
-};
+function swipeToPage(page: number): void {
+	if (page >= 1 && page <= totalPages.value) {
+		currentPage.value = page;
+	}
+}
 
-const showDots = computed(() => {
-  return totalPages.value > 5;
-});
+function nextPage(): void {
+	if (currentPage.value < totalPages.value) {
+		currentPage.value += 1;
+	}
+}
 
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value += 1;
-  }
-};
-
-const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value -= 1;
-  }
-};
+function prevPage(): void {
+	if (currentPage.value > 1) {
+		currentPage.value -= 1;
+	}
+}
 </script>
 
 <template>
-	<!-- TODO - finish pager -->
-	<div class="pager">
+	<div class="pager flex items-center">
 		<Action :disabled="currentPage === 1" @click="prevPage">
-			←
+			<Icon name="material-symbols:keyboard-arrow-left" />
 		</Action>
-		<div class="pages">
-			<button v-for="page in pages" :key="page" @click="swipeToPage(page)">
+		<div class="pages flex overflow-x-auto">
+			<button
+				v-for="page in getPaginationPages"
+				:key="page"
+				class="page-button mx-1 px-2 py-1 cursor-pointer transition-colors"
+				:class="{ 'font-bold': page === currentPage }"
+				@click="swipeToPage(page)"
+			>
 				{{ page }}
 			</button>
 		</div>
 		<Action :disabled="currentPage === totalPages" @click="nextPage">
-			→
+			<Icon name="material-symbols:keyboard-arrow-right" />
 		</Action>
-		<div v-if="showDots" class="dots">
-			...
-		</div>
 	</div>
 </template>
 
 <style scoped>
-.pager {
-  display: flex;
-  align-items: center;
-}
-
-.pages {
-  display: flex;
-  overflow-x: auto;
-}
-
-.pages button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.dots {
-  margin-left: 10px;
-}
+    .active {
+        color: var(--link-color-hover);
+    }
 </style>
