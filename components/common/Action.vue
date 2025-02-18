@@ -22,12 +22,7 @@ const variantStyles = computed(() => {
 });
 
 const isloading = computed(() => {
-	console.log('disabled');
 	return (props.loading && !props.disabled) ? 'loading' : '';
-});
-
-watch(() => props.disabled, () => {
-	console.log('disabled: ', props.disabled);
 });
 
 const isDisabled = computed(() => {
