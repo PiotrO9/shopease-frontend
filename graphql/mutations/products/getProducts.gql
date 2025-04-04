@@ -1,0 +1,15 @@
+query RandomProducts($count: Int!) {
+	randomProducts(count: $count) {
+		id
+		name
+		description
+		quantity
+		variants {
+			price
+			inventory
+			sku
+			variant
+			image
+		}
+	}
+}

@@ -5,10 +5,11 @@ export default defineNuxtConfig({
 		'@nuxt/icon',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/google-fonts',
-		'@nuxtjs/apollo',
 	],
 
 	plugins: ['~/plugins/pinia.js'],
+
+	ssr: true,
 
 	components: [
 		{
@@ -19,21 +20,16 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: ['./assets/styles/app.css'],
 
+	runtimeConfig: {
+		public: {
+			graphqlEndpoint: process.env.BACKEND_SERVER || '',
+		},
+	},
+
 	compatibilityDate: '2024-12-22',
 
 	typescript: {
 		typeCheck: true,
-	},
-
-	apollo: {
-		clients: {
-			default: {
-				cookieAttributes: {
-					httpOnly: true,
-				},
-				httpEndpoint: process.env.BACKEND_SERVER ?? '',
-			},
-		},
 	},
 
 	eslint: {
