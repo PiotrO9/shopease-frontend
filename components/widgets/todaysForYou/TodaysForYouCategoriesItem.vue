@@ -1,25 +1,45 @@
 <script setup lang='ts'>
 interface Props {
 	selected?: boolean;
+	categoryId: string;
 	categoryName: string;
 }
 
-const { selected = false, categoryName } = defineProps<Props>();
+const { selected = false, categoryId, categoryName } = defineProps<Props>();
 
 const emit = defineEmits<{
-	(e: 'select', categoryName: string): void;
+	(e: 'select', categoryId: string): void;
 }>();
 
-function handleCategoryCLick() {
-	emit('select', categoryName);
+function handleCategoryClick() {
+	emit('select', categoryId);
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+	if (event.key === 'Enter' || event.key === ' ') {
+		event.preventDefault();
+		handleCategoryClick();
+	}
 }
 </script>
 
 <template>
-	<li class="cursor-pointer transition-colors bg-white px-8 py-2 rounded-md" :class="{ selected }" @click="handleCategoryCLick">
-		<span class="transition-colors text-lg font-bold text-gray-800">
+	<li>
+		<button
+			class="cursor-pointer transition-colors px-8 py-2 rounded-md text-lg font-bold"
+			:class="[
+				selected
+					? 'bg-primary text-white border-primary'
+					: 'bg-white text-gray-800 hover:bg-gray-100',
+			]"
+			:aria-current="selected ? 'true' : 'false'"
+			:aria-label="`${categoryName} category${selected ? ' (selected)' : ''}`"
+			tabindex="0"
+			@click="handleCategoryClick"
+			@keydown="handleKeyDown"
+		>
 			{{ categoryName }}
-		</span>
+		</button>
 	</li>
 </template>
 
