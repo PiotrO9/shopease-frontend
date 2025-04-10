@@ -11,12 +11,11 @@ const variant = computed(() => {
 	return product.variants[0];
 });
 
+// TODO - Fill product link with real data
 const maxInventory = ref(50);
 const currency = ref('$');
 // TODO - Fill product link with real data
 const productLink = ref('');
-
-const exampleProduct = ref({ productId: '123' });
 </script>
 
 <template>
@@ -29,7 +28,7 @@ const exampleProduct = ref({ productId: '123' });
 					</NuxtLink>
 
 					<AddFavoriteProduct
-						:product="exampleProduct"
+						:product-id="product.id"
 						class="absolute top-2 right-2"
 					/>
 				</div>

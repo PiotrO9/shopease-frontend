@@ -2,27 +2,23 @@
 import { ref, computed } from 'vue';
 
 interface Props {
-    product: ProductDataModel;
+	productId: number;
     backgroundColor?: string;
     emptyHearthColor?: string;
     activeHearthColor?: string;
 }
 
-interface ProductDataModel {
-    productId: string;
-}
-
-const { product, backgroundColor = 'white', emptyHearthColor = 'var(--gray-600)', activeHearthColor = 'var(--color-error)' } = defineProps<Props>();
+const { productId, backgroundColor = 'white', emptyHearthColor = 'var(--gray-600)', activeHearthColor = 'var(--color-error)' } = defineProps<Props>();
 
 const emit = defineEmits<{
-    (e: 'click', datas: ProductDataModel): void;
+    (e: 'click', datas: number): void;
 }>();
 
 const isActive = ref(false);
 
 function handleClick() {
     isActive.value = !isActive.value;
-    emit('click', product);
+    emit('click', productId);
 }
 
 const fillColor = computed(() => {
@@ -56,7 +52,3 @@ const fillColor = computed(() => {
 		</svg>
 	</div>
 </template>
-
-<style scoped>
-/* Add any additional styles here if needed */
-</style>
