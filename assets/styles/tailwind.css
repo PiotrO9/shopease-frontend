@@ -12,10 +12,19 @@
 	}
 
 	.vertical-divider {
-		@apply w-[2px] h-full bg-primary;
+		@apply h-full w-[2px] bg-primary;
 	}
 
 	.full-container {
 		@apply w-dvw;
+	}
+}
+
+@layer base {
+	a:focus-visible,
+	button:focus-visible,
+	[role='button']:focus-visible,
+	[tabindex='0']:focus-visible {
+		@apply outline-linkBase outline-2 outline-offset-1;
 	}
 }

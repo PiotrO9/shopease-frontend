@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 interface Props {
 	selected?: boolean;
 	categoryId: string;
@@ -26,15 +26,14 @@ function handleKeyDown(event: KeyboardEvent) {
 <template>
 	<li>
 		<button
-			class="cursor-pointer transition-colors px-8 py-2 rounded-md text-lg font-bold"
+			class="border-1 cursor-pointer rounded-md border-solid px-8 py-2 text-lg font-bold transition-colors"
 			:class="[
 				selected
-					? 'bg-primary text-white border-primary'
-					: 'bg-white text-gray-800 hover:bg-gray-100',
+					? 'border-primary bg-primary text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2'
+					: 'border-gray600 bg-white text-gray-800 hover:bg-gray-100 focus:border-primary',
 			]"
 			:aria-current="selected ? 'true' : 'false'"
 			:aria-label="`${categoryName} category${selected ? ' (selected)' : ''}`"
-			tabindex="0"
 			@click="handleCategoryClick"
 			@keydown="handleKeyDown"
 		>

@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import type { FlashSaleProductType } from '~/services/productService';
 
 interface Props {
@@ -6,6 +6,10 @@ interface Props {
 }
 
 const { product } = defineProps<Props>();
+
+const randomNumber = ref(Math.floor(Math.random() * 10) + 1);
+const rating = ref((Math.random() * 5 + 1).toFixed(1));
+const currency = ref('$');
 
 const variant = computed(() => {
 	if (!product.variants?.length) {
@@ -17,53 +21,42 @@ const variant = computed(() => {
 });
 
 const productLink = computed(() => `/product/${product.id}`);
-const imageLoading = ref(true);
-
-function handleImageLoad() {
-	imageLoading.value = false;
-}
-
-function handleImageError() {
-	imageLoading.value = false;
-	console.error(`Failed to load image for product ${product.id}`);
-}
 </script>
 
 <template>
-	<li v-if="variant" class="inline-block">
-		<SaleCard>
-			<template #upper>
-				<div class="relative">
-					<NuxtLink
-						:to="productLink"
-						class="bg-gray600 rounded-t-2xl justify-center items-center flex w-[270px] h-[270px] relative overflow-hidden"
-						:aria-label="`View ${product.name} details`"
-						tabindex="0"
-					>
-						<img
-							class="image size-48 object-cover transition-opacity duration-300"
-							:class="{ 'opacity-0': imageLoading }"
-							:src="variant.image"
-							:alt="`${product.name} - 'Default variant`"
-							@load="handleImageLoad"
-							@error="handleImageError"
-						/>
-						<div
-							v-if="imageLoading"
-							class="absolute inset-0 flex items-center justify-center bg-gray-200"
-						>
-							<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-						</div>
-					</NuxtLink>
-
-					<AddFavoriteProduct
-						:product-id="product.id"
-						class="absolute top-2 right-2"
-					/>
-				</div>
-			</template>
+	<li
+		v-if="variant"
+		class="xs:max-w-[364px] inline-block w-full rounded-2xl border-2 border-solid border-inherit"
+	>
+		<SaleCard :product="product">
 			<template #lower>
-				<!-- Add product details here -->
+				<div
+					class="border-color-gray600 rounded-b-xl border-2 border-t-0 border-solid bg-white"
+				>
+					<div class="flex flex-col gap-2 p-4">
+						<NuxtLink
+							:to="productLink"
+							class="inline-block w-max text-wrap text-lg font-bold"
+							:aria-label="`View ${product.name} details`"
+							tabindex="0"
+						>
+							{{ product.name }}
+						</NuxtLink>
+						<div class="flex items-center gap-2">
+							<Icon
+								name="material-symbols:star-rounded"
+								class="bg-gold size-5"
+							/>
+							<span class="font-bold tracking-wider">
+								{{ rating }}
+							</span>
+							<span class="text-gray500"> {{ randomNumber }}K + sold </span>
+						</div>
+						<span class="text-2xl font-bold">
+							{{ variant.price }} {{ currency }}
+						</span>
+					</div>
+				</div>
 			</template>
 		</SaleCard>
 	</li>

@@ -2,6 +2,15 @@
 export default {
 	content: [],
 	theme: {
+		screens: {
+			xxs: '420px',
+			xs: '480px',
+			sm: '640px',
+			md: '768px',
+			lg: '1024px',
+			xl: '1280px',
+			'2xl': '1536px',
+		},
 		extend: {
 			colors: {
 				primary: 'var(--color-primary)',
@@ -10,14 +19,16 @@ export default {
 				gray500: 'var(--gray-500)',
 				gray600: 'var(--gray-600)',
 				gray700: 'var(--gray-700)',
+				gold: 'var(--color-gold)',
 				inputColor: 'var(--input-color)',
+				linkBase: 'var(--link-color-hover)',
 			},
 			container: {
-                center: true,
-                screens: {
-                    sm: '1536px',
-                },
-            },
+				center: true,
+				screens: {
+					sm: '1536px',
+				},
+			},
 		},
 	},
 	plugins: [],

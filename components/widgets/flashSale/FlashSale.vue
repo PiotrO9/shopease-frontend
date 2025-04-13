@@ -1,18 +1,28 @@
 <template>
-	<section class="w-full py-8 flex justify-center bg-gray300" aria-label="Flash Sale Section">
-		<div class="w-max[1536px] w-full container gap-4 flex flex-col p-4">
-			<div class="flex gap-4 align-center w-max">
-				<h2 class="text-3xl my-auto font-bold h-max">
-					Flash Sale
-				</h2>
-				<div class="flex select-none gap-2 items-center" role="timer" aria-label="Time remaining">
+	<section
+		class="flex w-full justify-center bg-gray300 py-8"
+		aria-label="Flash Sale Section"
+	>
+		<div class="w-max[1536px] container flex w-full flex-col gap-4 p-4">
+			<div class="align-center flex w-max flex-wrap gap-4">
+				<h2 class="my-auto h-max text-3xl font-bold">Flash Sale</h2>
+				<div
+					class="flex select-none items-center gap-2"
+					role="timer"
+					aria-label="Time remaining"
+				>
 					<span class="time select-none" aria-label="Days">{{ days }}</span> :
 					<span class="time select-none" aria-label="Hours">{{ hours }}</span> :
-					<span class="time select-none" aria-label="Minutes">{{ minutes }}</span> :
-					<span class="time select-none" aria-label="Seconds">{{ seconds }}</span>
+					<span class="time select-none" aria-label="Minutes">{{
+						minutes
+					}}</span>
+					:
+					<span class="time select-none" aria-label="Seconds">{{
+						seconds
+					}}</span>
 				</div>
 			</div>
-			<div class="overflow-x-auto whitespace-nowrap p-4 pl-0">
+			<div class="overflow-x-visible whitespace-nowrap p-4 px-0">
 				<FlashSaleList />
 			</div>
 		</div>
@@ -25,9 +35,15 @@ import type { Ref } from 'vue';
 const timeLeft: Ref<number> = ref(8 * 24 * 60 * 60); // 8 days
 let timer: NodeJS.Timeout | null = null;
 
-const days = computed(() => String(Math.floor(timeLeft.value / 86400)).padStart(2, '0'));
-const hours = computed(() => String(Math.floor((timeLeft.value % 86400) / 3600)).padStart(2, '0'));
-const minutes = computed(() => String(Math.floor((timeLeft.value % 3600) / 60)).padStart(2, '0'));
+const days = computed(() =>
+	String(Math.floor(timeLeft.value / 86400)).padStart(2, '0'),
+);
+const hours = computed(() =>
+	String(Math.floor((timeLeft.value % 86400) / 3600)).padStart(2, '0'),
+);
+const minutes = computed(() =>
+	String(Math.floor((timeLeft.value % 3600) / 60)).padStart(2, '0'),
+);
 const seconds = computed(() => String(timeLeft.value % 60).padStart(2, '0'));
 
 function handleTimerTick(): void {

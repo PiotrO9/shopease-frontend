@@ -1,5 +1,8 @@
-<script setup lang='ts'>
-import { getProducts, type FlashSaleProductType } from '~/services/productService';
+<script setup lang="ts">
+import {
+	getProducts,
+	type FlashSaleProductType,
+} from '~/services/productService';
 
 const products = ref<FlashSaleProductType[]>([]);
 const productsAmount = ref(4);
@@ -17,19 +20,20 @@ onMounted(fetchProducts);
 
 <template>
 	<section
-		class="w-full py-8 flex justify-center bg-gray300"
+		class="flex w-full justify-center bg-white py-8"
 		aria-label="Today's For You Products"
 	>
-		<div class="w-max[1536px] w-full container gap-4 flex flex-col p-4">
-			<div class="flex w-full gap-4 align-center justify-between flex-wrap">
-				<h2 class="text-3xl my-auto font-bold h-max">
-					Today's For You
-				</h2>
+		<div class="w-max[1536px] container flex w-full flex-col gap-4 p-4">
+			<div class="align-center flex w-full flex-wrap justify-between gap-4">
+				<h2 class="my-auto h-max text-3xl font-bold">Today's For You</h2>
 				<TodaysForYouCategories />
 			</div>
 
-			<div class="overflow-x-auto whitespace-nowrap p-4 pl-0">
-				<ul class="flex gap-4" role="list">
+			<div class="grid whitespace-nowrap p-4 px-0">
+				<ul
+					class="xxs:grid-cols-2 grid max-w-[1536px] grid-cols-1 gap-4 border-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+					role="list"
+				>
 					<TodaysForYouItem
 						v-for="product in products"
 						:key="product.id"

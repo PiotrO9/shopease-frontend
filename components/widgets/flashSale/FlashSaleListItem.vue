@@ -8,62 +8,35 @@ interface Props {
 
 const { product } = defineProps<Props>();
 
-const variant: ComputedRef<FlashSaleProductType['variants'][0] | null> = computed(() => {
-	if (!product.variants?.length) return null;
-	return product.variants[0];
-});
-
 const maxInventory = ref(50);
 const currency = ref('$');
-const productLink = computed(() => `/products/${product.id}`);
 
-function handleKeyDown(event: KeyboardEvent): void {
-	if (event.key === 'Enter' || event.key === ' ') {
-		event.preventDefault();
-		navigateTo(productLink.value);
-	}
-}
+const variant: ComputedRef<FlashSaleProductType['variants'][0] | null> =
+	computed(() => {
+		if (!product.variants?.length) return null;
+		return product.variants[0];
+	});
+
+const productLink = computed(() => `/products/${product.id}`);
 </script>
 
 <template>
 	<li
 		v-if="variant"
-		class="relative w-[270px] border-gray300 border-solid border-2 rounded-2xl"
+		class="min-w-[364px] rounded-2xl border-2 border-solid border-gray300"
 		role="listitem"
 	>
-		<SaleCard>
-			<template #upper>
-				<div class="relative">
-					<NuxtLink
-						:to="productLink"
-						class="bg-gray600 rounded-t-2xl justify-center items-center flex w-[270px]"
-						:aria-label="`View ${product.name} details`"
-						tabindex="0"
-						@keydown="handleKeyDown"
-					>
-						<img
-							class="image size-48"
-							:src="variant.image"
-							:alt="product.name"
-							loading="lazy"
-						/>
-					</NuxtLink>
-
-					<AddFavoriteProduct
-						:product-id="product.id"
-						class="absolute top-2 right-2"
-					/>
-				</div>
-			</template>
+		<SaleCard :product="product">
 			<template #lower>
-				<div class="bg-white rounded-b-xl w-[270px]">
-					<div class="p-4 flex flex-col">
+				<div
+					class="border-color-gray600 rounded-b-xl border-2 border-t-0 border-solid bg-white"
+				>
+					<div class="flex flex-col gap-2 p-4">
 						<NuxtLink
 							:to="productLink"
-							class="text-lg font-bold"
+							class="word-break-all inline-block w-max text-wrap text-lg font-bold"
 							:aria-label="`View ${product.name} details`"
 							tabindex="0"
-							@keydown="handleKeyDown"
 						>
 							{{ product.name }}
 						</NuxtLink>
@@ -71,16 +44,15 @@ function handleKeyDown(event: KeyboardEvent): void {
 							{{ variant.price }} {{ currency }}
 						</span>
 					</div>
-					<hr>
-					<div class="p-4 flex items-center gap-2">
+					<hr />
+					<div class="flex items-center gap-2 p-4">
 						<progress
-							class="w-50 h-3 rounded-full overflow-hidden bg-gray-200 appearance-none"
+							class="w-50 h-3 appearance-none overflow-hidden rounded-full bg-gray-200"
 							:value="variant.inventory"
 							:max="maxInventory"
 							:aria-label="`${variant.inventory} out of ${maxInventory} items remaining`"
-						>
-						</progress>
-						<span class="text-gray-500 text-sm">
+						></progress>
+						<span class="text-sm text-gray-500">
 							{{ variant.inventory }}/{{ maxInventory }}
 						</span>
 					</div>
@@ -91,14 +63,6 @@ function handleKeyDown(event: KeyboardEvent): void {
 </template>
 
 <style scoped>
-.image {
-	transition: scale 0.3s ease-in-out;
-
-	&:hover {
-		scale: 1.05;
-	}
-}
-
 progress::-webkit-progress-bar {
 	background-color: var(--color-gray-300);
 	border-radius: 9999px;
