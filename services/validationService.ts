@@ -2,14 +2,46 @@ import { CountryCode } from '../types/enums/postal-code-patterns';
 
 class ValidationService {
 	isValidEmail(email: string): boolean {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(email);
+		const emailRegex =
+			/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+		if (!email || email.length > 254) {
+			return false;
+		}
+
+		if (!emailRegex.test(email)) {
+			return false;
+		}
+
+		const parts = email.split('@');
+		if (parts.length !== 2) {
+			return false;
+		}
+
+		const [localPart, domainPart] = parts;
+
+		if (localPart.length > 64) {
+			return false;
+		}
+
+		if (!domainPart || domainPart.length > 255) {
+			return false;
+		}
+
+		if (email.includes('..')) {
+			return false;
+		}
+
+		const domainRegex =
+			/^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+		if (!domainRegex.test(domainPart)) {
+			return false;
+		}
+
+		return true;
 	}
 
-	validatePhoneNumber(
-		phoneNumber: string,
-		countryCode: CountryCode,
-	): boolean {
+	validatePhoneNumber(phoneNumber: string, countryCode: CountryCode): boolean {
 		switch (countryCode) {
 			case CountryCode.US: {
 				const usCanadaRegex =
@@ -21,9 +53,13 @@ class ValidationService {
 				return numericRegex.test(phoneNumber);
 			}
 			case CountryCode.Poland: {
-				const polandRegex =
-					/^(?:\+48)?[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{3}$/;
-				return polandRegex.test(phoneNumber);
+				const polandRegexWithSeparators =
+					/^(?:\+48)?[-.\s]?\d{3}[-.\s]\d{3}[-.\s]\d{3}$/;
+				const polandRegexWithoutSeparators = /^(?:\+48)?\d{9}$/;
+				return (
+					polandRegexWithSeparators.test(phoneNumber) ||
+					polandRegexWithoutSeparators.test(phoneNumber)
+				);
 			}
 			default:
 				return false;
@@ -31,8 +67,20 @@ class ValidationService {
 	}
 
 	isValidPassword(password: string): boolean {
-		const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-		return passwordRegex.test(password);
+		const minLength = 8;
+		const hasMinLength = password.length >= minLength;
+		const hasUpperCase = /[A-Z]/.test(password);
+		const hasLowerCase = /[a-z]/.test(password);
+		const hasNumbers = /\d/.test(password);
+		const hasSpecialChars = /[!@#$%^&*()_+{}[\]\]:;<>,.?~/-]/.test(password);
+
+		return (
+			hasMinLength &&
+			hasUpperCase &&
+			hasLowerCase &&
+			hasNumbers &&
+			hasSpecialChars
+		);
 	}
 
 	isValidURL(url: string): boolean {
