@@ -34,7 +34,7 @@ const productLink = computed(() => `/products/${product.id}`);
 					<div class="flex flex-col gap-2 p-4">
 						<NuxtLink
 							:to="productLink"
-							class="word-break-all inline-block w-max text-wrap text-lg font-bold"
+							class="word-break-all inline-block w-full text-wrap text-lg font-bold"
 							:aria-label="`View ${product.name} details`"
 							tabindex="0"
 						>
