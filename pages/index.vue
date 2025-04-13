@@ -9,5 +9,6 @@ definePageMeta({
 	<div class="flex flex-col">
 		<flash-sale />
 		<todays-for-you />
+		<best-selling-store />
 	</div>
 </template>

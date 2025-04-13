@@ -52,7 +52,7 @@ const productLink = computed(() => `/product/${product.id}`);
 							</span>
 							<span class="text-gray500"> {{ randomNumber }}K + sold </span>
 						</div>
-						<span class="text-2xl font-bold">
+						<span class="text-2xl font-bold tracking-wider">
 							{{ variant.price }} {{ currency }}
 						</span>
 					</div>

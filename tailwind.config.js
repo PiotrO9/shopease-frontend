@@ -19,6 +19,7 @@ export default {
 				gray500: 'var(--gray-500)',
 				gray600: 'var(--gray-600)',
 				gray700: 'var(--gray-700)',
+				gray900: 'var(--gray-900)',
 				gold: 'var(--color-gold)',
 				inputColor: 'var(--input-color)',
 				linkBase: 'var(--link-color-hover)',

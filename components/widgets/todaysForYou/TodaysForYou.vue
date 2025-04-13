@@ -15,7 +15,7 @@ async function fetchProducts() {
 	}
 }
 
-onMounted(fetchProducts);
+await fetchProducts();
 </script>
 
 <template>

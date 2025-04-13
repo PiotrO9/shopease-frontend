@@ -40,7 +40,7 @@ const productLink = computed(() => `/products/${product.id}`);
 						>
 							{{ product.name }}
 						</NuxtLink>
-						<span class="text-2xl font-bold">
+						<span class="text-2xl font-bold tracking-wider">
 							{{ variant.price }} {{ currency }}
 						</span>
 					</div>
