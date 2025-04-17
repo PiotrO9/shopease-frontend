@@ -10,5 +10,6 @@ definePageMeta({
 		<flash-sale />
 		<todays-for-you />
 		<best-selling-store />
+		<hangers />
 	</div>
 </template>
