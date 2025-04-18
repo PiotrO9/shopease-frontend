@@ -5,8 +5,8 @@ export enum HttpMethod {
 	DELETE = 'delete',
 }
 
-interface GraphqlClient {
-    query<T>(query: string, variables?: any): Promise<T>;
+export interface GraphqlClient {
+	query<T>(query: string, variables?: any): Promise<T>;
 }
 
 export async function useApi<T>(method: HttpMethod, url: string, data?: any) {
@@ -18,6 +18,5 @@ export async function useApi<T>(method: HttpMethod, url: string, data?: any) {
 export async function useGraphql<T>(query: string, variables?: any) {
 	const { $graphql } = useNuxtApp();
 
-	return await ($graphql as GraphqlClient)
-		.query<T>(query, variables);
+	return await ($graphql as GraphqlClient).query<T>(query, variables);
 }

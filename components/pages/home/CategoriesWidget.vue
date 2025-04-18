@@ -1,13 +1,10 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 // Todo
 // categoriesWidget
 </script>
 
 <template>
-	<div>
-	</div>
+	<div></div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

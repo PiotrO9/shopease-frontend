@@ -34,6 +34,7 @@ async function handleFetchSubcategories(
 }
 
 handleFetchCategories();
+// TODO - Finish &  Refactor
 </script>
 
 <template>
@@ -76,5 +77,3 @@ handleFetchCategories();
 		</div>
 	</div>
 </template>
-
-<style scoped></style>

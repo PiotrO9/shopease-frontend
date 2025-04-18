@@ -2,21 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer buttons {
+@layer components {
 	.btn {
-		@apply flex items-center justify-center;
-	}
-
-	.flex-center {
-		@apply flex items-center justify-center;
-	}
-
-	.vertical-divider {
-		@apply h-full w-[2px] bg-primary;
-	}
-
-	.full-container {
-		@apply w-dvw;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
 
@@ -25,6 +15,24 @@
 	button:focus-visible,
 	[role='button']:focus-visible,
 	[tabindex='0']:focus-visible {
-		@apply outline-linkBase outline-2 outline-offset-1;
+		outline: 2px solid;
+		outline-offset: 1px;
+		outline-color: var(--link-color-hover);
+	}
+
+	.flex-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.vertical-divider {
+		height: 100%;
+		width: 2px;
+		background-color: var(--color-primary);
+	}
+
+	.full-container {
+		width: 100dvw;
 	}
 }

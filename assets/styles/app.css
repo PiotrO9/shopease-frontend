@@ -1,13 +1,13 @@
 /* stylelint-disable at-rule-empty-line-before */
 @import url('./tailwind.css');
 
-@import url('./abstracts/variables.css');
+@import url('./variables.css');
 
-@import url('./base/reset.css');
-@import url('./base/fonts.css');
-@import url('./base/elements.css');
-@import url('./base/base.css');
-@import url('./base/input.css');
+@import url('./reset.css');
+@import url('./fonts.css');
+@import url('./elements.css');
+@import url('./base.css');
+@import url('./input.css');
 
-@import url('./elements/button');
+@import url('./button');
 /* stylelint-enable at-rule-empty-line-before */

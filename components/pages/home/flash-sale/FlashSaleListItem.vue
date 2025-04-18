@@ -47,7 +47,7 @@ const productLink = computed(() => `/products/${product.id}`);
 					<hr />
 					<div class="flex items-center gap-2 p-4">
 						<progress
-							class="w-50 h-3 appearance-none overflow-hidden rounded-full bg-gray-200"
+							class="h-3 w-full appearance-none overflow-hidden rounded-full bg-gray-200"
 							:value="variant.inventory"
 							:max="maxInventory"
 							:aria-label="`${variant.inventory} out of ${maxInventory} items remaining`"

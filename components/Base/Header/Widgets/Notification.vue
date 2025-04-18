@@ -1,9 +1,5 @@
-<script setup lang='ts'>
-
-</script>
-
 <template>
 	<div>
-		<Icon name="mdi:bell" class="size-8 bg-gray500 cursor-pointer" />
+		<Icon name="mdi:bell" class="size-8 cursor-pointer bg-gray500" />
 	</div>
 </template>
