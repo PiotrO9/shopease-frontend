@@ -33,6 +33,7 @@ export default createConfigForNuxt({
 			'@stylistic/member-delimiter-style': 'error',
 			'@stylistic/indent': ['off', 'tab'],
 			'@stylistic/arrow-parens': 'off',
+			'@stylistic/quote-props': 'off',
 		},
 	})
 	.override('nuxt/vue/rules', {
@@ -42,6 +43,18 @@ export default createConfigForNuxt({
 			'vue/no-side-effects-in-computed-properties': 'off',
 			'vue/no-v-html': 'off',
 			'vue/html-self-closing': 'off',
+			'vue/attribute-hyphenation': [
+				'error',
+				'never',
+				{
+					ignore: [
+						'aria-label-text',
+						'aria-label',
+						'aria-labelledby',
+						'aria-describedby',
+					],
+				},
+			],
 			'vue/max-attributes-per-line': [
 				'error',
 				{

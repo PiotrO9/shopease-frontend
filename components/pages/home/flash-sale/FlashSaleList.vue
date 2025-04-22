@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
+import { ref } from 'vue';
 import {
-	getProducts,
+	productService,
 	type FlashSaleProductType,
 } from '~/services/productService';
 
-const products: Ref<FlashSaleProductType[]> = ref([]);
+const products = ref<FlashSaleProductType[]>([]);
 const productsAmount = ref(4);
 
-async function fetchProducts(): Promise<void> {
-	try {
-		products.value = await getProducts(productsAmount.value);
-	} catch (err) {
-		console.error('Error fetching flash sale products:', err);
-	}
+async function handleFetchProducts(): Promise<void> {
+	products.value = await productService.getRandomProducts(productsAmount.value);
 }
 
-onMounted(fetchProducts);
+onMounted(handleFetchProducts);
 </script>
 
 <template>
