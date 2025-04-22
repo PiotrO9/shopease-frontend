@@ -38,7 +38,7 @@ export default createConfigForNuxt({
 	})
 	.override('nuxt/vue/rules', {
 		rules: {
-			'vue/no-multiple-template-root': 'warn',
+			'vue/no-multiple-template-root': 'off',
 			'vue/multi-word-component-names': 'off',
 			'vue/no-side-effects-in-computed-properties': 'off',
 			'vue/no-v-html': 'off',

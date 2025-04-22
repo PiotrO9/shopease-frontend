@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-	layout: 'homepage',
+	layout: 'default',
 	colorMode: 'light',
 });
 </script>

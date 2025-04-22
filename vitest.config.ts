@@ -7,11 +7,11 @@ export default defineConfig({
 	test: {
 		globals: true,
 		environment: 'jsdom',
-		setupFiles: ['./tests/setup.ts'],
-		include: ['tests/**/*.test.ts'],
+		setupFiles: ['./app/tests/setup.ts'],
+		include: ['app/tests/**/*.test.ts'],
 		coverage: {
 			reporter: ['text', 'json', 'html'],
-			exclude: ['node_modules/', 'tests/__mocks__/**'],
+			exclude: ['node_modules/', 'app/tests/__mocks__/**'],
 		},
 		alias: {
 			'~': path.resolve(__dirname, '.'),

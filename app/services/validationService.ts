@@ -20,7 +20,7 @@ class ValidationService {
 
 		const [localPart, domainPart] = parts;
 
-		if (localPart.length > 64) {
+		if (localPart?.length && localPart.length > 64) {
 			return false;
 		}
 
@@ -114,23 +114,26 @@ class ValidationService {
 	}
 
 	validatePolishNIP(nip: string): boolean {
-		const cleanNIP = nip.replace(/\D/g, '');
+		const cleanNIP = nip.replace(/\D/g, '') as string;
 
 		if (cleanNIP.length !== 10) {
 			return false;
 		}
 
-		const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+		const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7] as const;
+		type WeightsType = typeof weights;
 
 		let checksum = 0;
 
 		for (let i = 0; i < weights.length; i++) {
-			checksum += parseInt(cleanNIP[i], 10) * weights[i];
+			const digit = cleanNIP[i];
+			if (!digit) return false;
+			checksum += parseInt(digit, 10) * (weights[i] as WeightsType[number]);
 		}
 
-		const checkDigit = parseInt(cleanNIP[9], 10);
-
-		return checksum % 11 === checkDigit;
+		const checkDigit = cleanNIP[9];
+		if (!checkDigit) return false;
+		return checksum % 11 === parseInt(checkDigit, 10);
 	}
 }
 

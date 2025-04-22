@@ -11,11 +11,12 @@ const { product } = defineProps<Props>();
 const maxInventory = ref(50);
 const currency = ref('$');
 
-const variant: ComputedRef<FlashSaleProductType['variants'][0] | null> =
-	computed(() => {
-		if (!product.variants?.length) return null;
-		return product.variants[0];
-	});
+const variant: ComputedRef<
+	FlashSaleProductType['variants'][0] | null | undefined
+> = computed(() => {
+	if (!product.variants?.length) return null;
+	return product.variants[0];
+});
 
 const productLink = computed(() => `/products/${product.id}`);
 </script>

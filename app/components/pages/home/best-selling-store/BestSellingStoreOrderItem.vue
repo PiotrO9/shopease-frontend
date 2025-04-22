@@ -7,11 +7,12 @@ interface Props {
 
 const { orderItem } = defineProps<Props>();
 
-const variant: ComputedRef<FlashSaleProductType['variants'][0] | null> =
-	computed(() => {
-		if (!orderItem.variants?.length) return null;
-		return orderItem.variants[0];
-	});
+const variant: ComputedRef<
+	FlashSaleProductType['variants'][0] | null | undefined
+> = computed(() => {
+	if (!orderItem.variants?.length) return null;
+	return orderItem.variants[0];
+});
 
 const currency = ref('$');
 </script>
