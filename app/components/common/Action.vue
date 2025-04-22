@@ -8,6 +8,18 @@ interface ActionProps {
 	disabled?: boolean;
 }
 
+enum baseButtonTypes {
+	primary = 'primary',
+	secondary = 'secondary',
+	other = 'other',
+}
+
+enum controlSizes {
+	small = 'small',
+	medium = 'medium',
+	big = 'big',
+}
+
 const props = withDefaults(defineProps<ActionProps>(), {
 	variant: 'primary',
 });
@@ -15,18 +27,19 @@ const props = withDefaults(defineProps<ActionProps>(), {
 const variantStyles = computed(() => {
 	if (props.variant === 'primary') {
 		return 'bg-white text-primary border-inputColor hover:border-primary';
-	}
-	else {
+	} else {
 		return 'bg-primary text-white';
 	}
 });
 
 const isloading = computed(() => {
-	return (props.loading && !props.disabled) ? 'loading' : '';
+	return props.loading && !props.disabled ? 'loading' : '';
 });
 
 const isDisabled = computed(() => {
-	return props.disabled ? 'opacity-30 cursor-not-allowed border-gray700 bg-gray700 text-white' : '';
+	return props.disabled
+		? 'opacity-30 cursor-not-allowed border-gray700 bg-gray700 text-white'
+		: '';
 });
 
 const emit = defineEmits(['click']);
@@ -39,7 +52,7 @@ function handleClick() {
 <template>
 	<button
 		:class="[
-			'tracking-wider relative cursor-pointer transition-colors flex-center border-2 border-solid rounded-lg font-bold py-3 px-4 select-none',
+			'flex-center relative cursor-pointer select-none rounded-lg border-2 border-solid px-4 py-3 font-bold tracking-wider transition-colors',
 			disabled ? isDisabled : variantStyles,
 			styles,
 			isloading,

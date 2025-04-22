@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import BestSellingStoreOrderItem from './BestSellingStoreOrderItem.vue';
-import {
-	productService,
-	type FlashSaleProductType,
-} from '~/services/productService';
+import type { FlashSaleProductType } from '~/services/productService';
+import { productService } from '~/services/productService';
+
 import BaseSection from '~/components/base/BaseSection.vue';
 
 const orderItems = ref<FlashSaleProductType[]>([]);

@@ -7,7 +7,6 @@ import {
 	mockFileTypes,
 } from '../../__mocks__/data/validation.mock';
 import { validationService } from '../../../services/validationService';
-import { CountryCode } from '../../../types/enums/postal-code-patterns';
 
 describe('ValidationService', () => {
 	describe('isNumberInRange', () => {

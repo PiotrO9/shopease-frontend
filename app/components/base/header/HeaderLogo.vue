@@ -1,16 +1,17 @@
 <script setup lang="ts">
 interface Props {
-    // Tailwind class for text color
-    textColor?: string;
+	'text-color'?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    textColor: 'text-black',
+	'text-color': 'text-black',
 });
 </script>
 
 <template>
 	<div class="inline-flex h-max w-max">
-		<span class="text-4xl font-bold select-none" :class="props.textColor">Shopease.com</span>
+		<span class="select-none text-4xl font-bold" :class="props['text-color']"
+			>Shopease.com</span
+		>
 	</div>
 </template>

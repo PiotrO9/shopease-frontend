@@ -10,7 +10,9 @@ export interface GraphqlClient {
 }
 
 export async function useApi<T>(method: HttpMethod, url: string, data?: any) {
-	const { $api } = useNuxtApp();
+	const { $api } = useNuxtApp() as unknown as {
+		$api: Record<HttpMethod, <T>(url: string, data?: any) => Promise<T>>;
+	};
 
 	return await $api[method]<T>(url, data);
 }
