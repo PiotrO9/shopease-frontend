@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-	title: string;
+	title?: string;
 	'aria-label': string;
 	bgColor?: string;
 }
@@ -15,8 +15,11 @@ const props = defineProps<Props>();
 		:aria-label="props['aria-label']"
 	>
 		<div class="w-max[1536px] container flex w-full flex-col gap-4 p-4">
-			<div class="align-center flex w-full flex-wrap justify-between gap-4">
-				<h2 v-if="props['title']" class="my-auto h-max text-3xl font-bold">
+			<div
+				v-if="props['title']"
+				class="align-center flex w-full flex-wrap justify-between gap-4"
+			>
+				<h2 class="my-auto h-max text-3xl font-bold">
 					{{ props['title'] }}
 				</h2>
 				<slot name="header-content" />
