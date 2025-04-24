@@ -2,7 +2,7 @@
 interface Props {
 	title: string;
 	'aria-label': string;
-	'bg-color'?: string;
+	bgColor?: string;
 }
 
 const props = defineProps<Props>();
@@ -11,7 +11,7 @@ const props = defineProps<Props>();
 <template>
 	<section
 		class="flex w-full justify-center py-8"
-		:class="props['bg-color'] || 'bg-white'"
+		:class="props['bgColor'] || 'bg-white'"
 		:aria-label="props['aria-label']"
 	>
 		<div class="w-max[1536px] container flex w-full flex-col gap-4 p-4">

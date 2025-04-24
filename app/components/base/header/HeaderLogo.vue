@@ -1,16 +1,18 @@
 <script setup lang="ts">
 interface Props {
-	'text-color'?: string;
+	textColor?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	'text-color': 'text-black',
+	textColor: 'text-black',
 });
 </script>
 
 <template>
 	<div class="inline-flex h-max w-max">
-		<span class="select-none text-4xl font-bold" :class="props['text-color']"
+		<span
+			class="select-none text-2xl font-bold md:text-4xl"
+			:class="props['textColor']"
 			>Shopease.com</span
 		>
 	</div>

@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 const inputElement = ref<HTMLInputElement | null>(null);
 
 function handleInputFocus() {
@@ -10,15 +10,25 @@ function handleInputFocus() {
 
 <template>
 	<div class="flex w-full">
-		<div class="flex items-center gap-3 text-gray700 border-gray500 border-solid border-2 h-max rounded-l-lg px-3 py-4 cursor-pointer">
-			<span class="text-gray700 text-2xl text-nowrap">
-				All Category
-			</span>
-			<Icon name="material-symbols:arrow-drop-down" class="size-8" />
+		<div
+			class="flex h-max cursor-pointer items-center gap-3 rounded-l-lg border-2 border-solid border-gray500 p-2 text-gray700"
+		>
+			<span class="text-md text-nowrap text-gray700 md:text-xl"
+				>All Category</span
+			>
+			<Icon name="material-symbols:arrow-drop-down" class="size-6 md:size-8" />
 		</div>
-		<div class="flex items-center border-2 gap-3 w-full border-l-0 rounded-r-lg border-gray500 h-max px-3 py-4 cursor-pointer" @click="handleInputFocus">
-			<Icon name="hugeicons:search-01" class="size-8 bg-gray500" />
-			<input ref="inputElement" type="text" class="border-none w-full tracking-wide clean rounded-none text-2xl border-0 outline-none" placeholder="Search for products" />
+		<div
+			class="flex h-max w-full cursor-pointer items-center gap-3 rounded-r-lg border-2 border-l-0 border-gray500 p-2"
+			@click="handleInputFocus"
+		>
+			<Icon name="hugeicons:search-01" class="size-6 bg-gray500 md:size-8" />
+			<input
+				ref="inputElement"
+				type="text"
+				class="clean text-md w-full rounded-none border-0 border-none tracking-wide outline-none md:text-xl"
+				placeholder="Search for products"
+			/>
 		</div>
 	</div>
 </template>

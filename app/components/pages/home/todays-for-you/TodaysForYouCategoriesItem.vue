@@ -30,7 +30,7 @@ function handleKeyDown(event: KeyboardEvent) {
 			:class="[
 				selected
 					? 'border-primary bg-primary text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2'
-					: 'border-gray600 bg-white text-gray-800 hover:bg-gray-100 focus:border-primary',
+					: 'border-gray600 bg-white text-gray-800 hover:bg-gray-100 focus-visible:border-primary focus-visible:outline-none',
 			]"
 			:aria-current="selected ? 'true' : 'false'"
 			:aria-label="`${categoryName} category${selected ? ' (selected)' : ''}`"

@@ -25,10 +25,10 @@ await handleFetchProducts();
 				class="grid-row-2 grid w-full grid-cols-1 gap-4 py-4 text-center xs:grid-cols-2 md:grid-cols-3"
 			>
 				<div
-					class="flex w-full flex-col items-center justify-center gap-4 rounded-lg bg-gray600 p-8 text-gray900"
+					class="flex w-full select-none flex-col items-center justify-center gap-4 rounded-lg bg-gray600 p-8 text-gray900"
 				>
-					<h3 class="font-bolder text-3xl font-bold">Shopease mall</h3>
-					<span class="max-w-[200px] font-medium">
+					<h3 class="text-4xl font-black">Shopease mall</h3>
+					<span class="max-w-[200px] font-bold">
 						Shop, Explore, Delight and Experience Mall Magic!
 					</span>
 				</div>

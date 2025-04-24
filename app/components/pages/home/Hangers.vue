@@ -9,7 +9,9 @@
 				src="../../../assets/static/hangers.webp"
 				class="absolute inset-0 h-full w-full object-cover"
 			/>
-			<h2 class="absolute text-center text-4xl font-bold text-white">
+			<h2
+				class="absolute text-center text-4xl font-bold italic text-white md:text-6xl"
+			>
 				Let's Shop Beyond Boundaries
 			</h2>
 		</div>
