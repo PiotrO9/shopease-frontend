@@ -3,11 +3,11 @@
 		"prefix": "vue3simple",
 		"body": [
 			"<script setup lang=\"ts\">",
-			"// Component logic here",
+			"// TODO",
 			"</script>",
 			"",
 			"<template>",
-			"  <div class=\"p-4\">",
+			"  <div>",
 			"    Test Text",
 			"  </div>",
 			"</template>",
