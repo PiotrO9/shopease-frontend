@@ -43,7 +43,7 @@ const currency = ref('$');
 					/>
 				</div>
 				<span class="md:text-md text-sm font-bold tracking-wider text-primary">
-					{{ variant?.price }} {{ currency }}
+					{{ variant?.price.basePrice }} {{ currency }}
 				</span>
 			</li>
 		</ul>

@@ -26,7 +26,7 @@ const productLink = computed(() => `/product/${product.id}`);
 <template>
 	<li
 		v-if="variant"
-		class="xs:max-w-[364px] inline-block w-full rounded-2xl border-2 border-solid border-inherit"
+		class="inline-block w-full rounded-2xl border-2 border-solid border-inherit xs:max-w-[364px]"
 	>
 		<SaleCard :product="product">
 			<template #lower>
@@ -45,7 +45,7 @@ const productLink = computed(() => `/product/${product.id}`);
 						<div class="flex items-center gap-2">
 							<Icon
 								name="material-symbols:star-rounded"
-								class="bg-gold size-5"
+								class="size-5 bg-gold"
 							/>
 							<span class="font-bold tracking-wider">
 								{{ rating }}
@@ -53,7 +53,7 @@ const productLink = computed(() => `/product/${product.id}`);
 							<span class="text-gray500"> {{ randomNumber }}K + sold </span>
 						</div>
 						<span class="text-2xl font-bold tracking-wider">
-							{{ variant.price }} {{ currency }}
+							{{ variant.price.basePrice }} {{ currency }}
 						</span>
 					</div>
 				</div>

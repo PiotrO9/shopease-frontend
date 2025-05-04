@@ -5,11 +5,13 @@ query RandomProducts($count: Int!) {
 		description
 		quantity
 		variants {
-			price
 			inventory
 			sku
 			variant
 			image
+			price {
+				basePrice
+			}
 		}
 	}
 }

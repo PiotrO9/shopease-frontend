@@ -9,11 +9,13 @@ export async function getProducts<T>(count: number) {
                 description
                 quantity
                 variants {
-                    price
                     inventory
                     sku
                     variant
                     image
+					price {
+                        basePrice
+                    }
                 }
             }
         }
@@ -29,7 +31,9 @@ export type FlashSaleProductType = {
 	description: string;
 	quantity: number;
 	variants: {
-		price: number;
+		price: {
+			basePrice: number;
+		};
 		inventory: number;
 		image: string;
 	}[];
@@ -47,7 +51,9 @@ class ProductService {
 						description
 						quantity
 						variants {
-							price
+							price {
+								basePrice
+							}
 							inventory
 							sku
 							variant
@@ -77,7 +83,9 @@ class ProductService {
 						description
 						quantity
 						variants {
-							price
+							price {
+								basePrice
+							}
 							inventory
 							sku
 							variant
