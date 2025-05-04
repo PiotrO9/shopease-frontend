@@ -45,7 +45,7 @@ const traits = ref([
 
 <template>
 	<div
-		class="flex flex-col gap-4 rounded-lg border-2 border-solid border-gray500 p-4"
+		class="flex h-max flex-col gap-4 rounded-lg border-2 border-solid border-gray500 p-4"
 	>
 		<h2>Filter</h2>
 		<Rating />

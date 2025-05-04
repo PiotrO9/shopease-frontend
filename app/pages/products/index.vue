@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import {
+	productService,
+	type FlashSaleProductType,
+} from '~/services/productService';
+
 definePageMeta({
 	layout: 'ecommerce',
 	colorMode: 'light',
@@ -16,6 +21,12 @@ const category = {
 const categoryItems = computed(() => {
 	return 4;
 });
+
+const products = ref<FlashSaleProductType[]>([]);
+
+onMounted(async () => {
+	products.value = await productService.getRandomProducts(10);
+});
 </script>
 
 <template>
@@ -26,7 +37,7 @@ const categoryItems = computed(() => {
 		</h1>
 		<div class="mt-4 flex gap-8">
 			<Filters />
-			<ProductsGrid />
+			<ProductsGrid :products />
 		</div>
 	</div>
 </template>
