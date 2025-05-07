@@ -1,72 +1,74 @@
-input[type="text"] {
-    padding: 0.75rem 0.25rem 0.75rem 0.75rem;
-    color: var(--text-color);
-    display: inline-flex;
-    border-radius: 8px;
-    border: 2px solid var(--input-color);
-    font-weight: bold;
-    background-color: #fff;
+input[type='text'],
+input[type='number'],
+textarea {
+	padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+	color: var(--text-color);
+	display: inline-flex;
+	border-radius: 8px;
+	border: 2px solid var(--input-color);
+	font-weight: bold;
+	background-color: #fff;
 
-    &::placeholder {
-        color: var(--input-color);
-    }
+	&::placeholder {
+		color: var(--input-color);
+	}
 }
 
-input[type="text"].clean {
+input[type='text'].clean {
 	border: none;
 	outline: none;
 	border-radius: 0;
 	padding: 0;
 }
 
-input[type="checkbox"] {
-    &::before {
-        content: '';
-        position: absolute;
-        left: 2px;
-        top: 1px;
-        height: 16px;
-        width: 16px;
-        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        background-color: transparent;
-    }
+input[type='checkbox'] {
+	&::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		top: 1px;
+		height: 16px;
+		width: 16px;
+		clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+		background-color: transparent;
+	}
 
-    &:checked::before {
-        background-color: #fff;
-    }
+	&:checked::before {
+		background-color: #fff;
+	}
 }
 
-input[type="radio"] {
-    border-radius: 50% !important;
+input[type='radio'] {
+	border-radius: 50% !important;
 
-    &::before {
-        content: '';
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background-color: var(--input-color);
-        display: none;
-    }
+	&::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		top: 2px;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background-color: var(--input-color);
+		display: none;
+	}
 
-    &:checked::before {
-        display: block;
-    }
+	&:checked::before {
+		display: block;
+	}
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    all: unset;
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-    border: 2px solid var(--input-color);
-    position: relative;
+input[type='checkbox'],
+input[type='radio'] {
+	all: unset;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	border: 2px solid var(--input-color);
+	position: relative;
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: .5;
-    }
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }
